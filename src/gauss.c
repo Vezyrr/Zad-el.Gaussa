@@ -76,8 +76,9 @@ int eliminate(Matrix *mat, Matrix *b)
 				{
 					mat->data[rzad][kol_temp] = mat->data[rzad][kol_temp] - mat->data[kol][kol_temp] * jaka_czesc_rzedu_gluwnego_odejmujemy;
 					
-					b->data[0][rzad] = b->data[0][rzad] - b->data[0][kol] * jaka_czesc_rzedu_gluwnego_odejmujemy;
+					
 				}
+				b->data[0][rzad] = b->data[0][rzad] - b->data[0][kol] * jaka_czesc_rzedu_gluwnego_odejmujemy;
 			}
 		}
 		//printToScreen(mat);
