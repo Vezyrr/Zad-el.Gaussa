@@ -36,7 +36,7 @@ int eliminate(Matrix *mat, Matrix *b)
 			if(fabs(mat->data[rzad][kol]) > max_abs_w_rzedzie)
 			{
 				idx_rzedu_z_max = rzad;
-				max_abs_w_rzedzie = mat->data[rzad][kol];
+				max_abs_w_rzedzie = fabs(mat->data[rzad][kol]);
 			}
 		}
 	//zamieniamy w b
