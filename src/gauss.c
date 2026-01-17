@@ -92,3 +92,4 @@ int eliminate(Matrix *mat, Matrix *b)
 	return 0;
 }
 
+//komentarz do bledu
