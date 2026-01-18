@@ -19,8 +19,8 @@ int znajdz_element_glowny_w_kol(Matrix* mat, int nr_kolumny)
 */
 int eliminate(Matrix *mat, Matrix *b)
 {
-	printf("\n\n");
-	printf("\n\n");
+	//printf("\n\n");
+	//printf("\n\n");
     /**
   	 * Tutaj należy umieścić właściwą implemntację.
 		 */
@@ -41,9 +41,20 @@ int eliminate(Matrix *mat, Matrix *b)
 		}
 	//zamieniamy w b
 		double b_holder;
+		b_holder = b->data[idx_rzedu_z_max][0];
+		//printf("b_holder = %f\n", b_holder);
+		b->data[idx_rzedu_z_max][0] = b->data[kol][0];
+		//printf("b->data[kol][0] = %f\n", b->data[kol][0]);
+		b->data[kol][0] = b_holder;	
+
+		/* STARE BLEDNE 
+		double b_holder;
 		b_holder = b->data[0][idx_rzedu_z_max];
+		printf("b_holder = %f\n", b_holder);
 		b->data[0][idx_rzedu_z_max] = b->data[0][kol];
-		b->data[0][kol] = b_holder;	
+		printf("b->data[0][kol] = %f\n", b->data[0][kol]);
+		b->data[0][kol] = b_holder;
+		*/
 	
 		
 	//zamieniamy, by el glowny był "na górze"
@@ -62,9 +73,11 @@ int eliminate(Matrix *mat, Matrix *b)
 		{
 			mat->data[kol][kol_temp] = row_temp_holder[kol_temp];
 		}
-		
-		//printToScreen(mat);
-		//printf("test\n");
+
+		printf("test\n");
+		printToScreen(mat);
+		printToScreen(b);
+		printf("test\n");
 
 	//dokonujemy zerowania obecnej kolumny
 		if(kol != mat->c - 1)
@@ -78,14 +91,15 @@ int eliminate(Matrix *mat, Matrix *b)
 					
 					
 				}
-				b->data[0][rzad] = b->data[0][rzad] - b->data[0][kol] * jaka_czesc_rzedu_gluwnego_odejmujemy;
+				b->data[rzad][0] = b->data[rzad][0] - b->data[kol][0] * jaka_czesc_rzedu_gluwnego_odejmujemy;
+				//b->data[0][rzad] = b->data[0][rzad] - b->data[0][kol] * jaka_czesc_rzedu_gluwnego_odejmujemy;
 			}
 		}
 		//printToScreen(mat);
 
 	}
 
-	printf("\n\n");
+	//printf("\n");
 	printToScreen(mat);
 	printToScreen(b);
 	
